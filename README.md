@@ -1,4 +1,4 @@
-# NBA Stats
+NBA Stats
 ------------
 A scrapping tool that gives stats per year of the spanish players in the NBA
 
