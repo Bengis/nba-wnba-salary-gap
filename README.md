@@ -20,6 +20,18 @@ Author
 -------
 Jose Ignacio Bengoechea Isasa, ignacio.bengis@gmail.com
 
+## Quickstart
+
+Assuming git, **[Vagrant][vagrant-install]** and **[VirtualBox][virtualbox-install]** installed:
+
+```bash
+ host$ git clone https://github.com/snowplow/snowplow.git
+ host$ cd snowplow
+ host$ vagrant up && vagrant ssh
+guest$ cd /vagrant/3-enrich/scala-common-enrich
+guest$ sbt test
+```
+
 License
 -------
 The MIT License
