@@ -20,10 +20,9 @@ Assuming git, **[Vagrant][vagrant-install]** and **[VirtualBox][virtualbox-insta
 
 ```bash
  host$ git clone https://github.com/snowplow/snowplow.git
- host$ cd snowplow
- host$ vagrant up && vagrant ssh
-guest$ cd /vagrant/3-enrich/scala-common-enrich
-guest$ sbt test
+ host$ cd nba-stats/code
+ host$ pip install lxml
+ host$ python nba-stats.py
 ```
 
 Practice 1: Web Scrapping
