@@ -10,6 +10,7 @@ from lxml import html
 import numpy as np
 import requests
 import sys
+import csv
 
 def getLxmlListPlayers(url):
  try:
@@ -71,6 +72,25 @@ def showHeaderStats(stats):
             for j in range(0,linelen):
                 print(stats[i][j],end='\t')    
             print(' ',end='\n')  
+            
+def exportCSV(stats):
+ try:
+     print("Exporting dataset.", end='\n')
+     header=["season", "players", "games", "minutes", "points", "rebds.", 
+             "assists", "steals", "blocks"]
+  
+     csvfile = "../data/nba-stats_out.csv"
+     with open(csvfile, "w") as output:
+         writer = csv.writer(output, lineterminator='\n')
+         writer.writerow(header)
+         for stat in stats:
+             if (stat[1]!=0):
+                 writer.writerow(stat)
+     print("Dataset exported to {}.".format(csvfile))
+ except Exception as e:
+     print('Error eCSV on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+     return teamStats
+ return teamStats
         
 def createTeamStats():
     teamStats=[]
@@ -149,6 +169,7 @@ for player in players:
     i+=1
 teamStats=adjustStats(teamStats)
 showHeaderStats(teamStats)
+exportCSV(teamStats)
 
 
 
