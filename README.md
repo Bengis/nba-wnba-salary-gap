@@ -1,7 +1,7 @@
 # NBA Stats
 
 <img src="https://raw.githubusercontent.com/Bengis/nba-stats/master/Logo.png"
- alt="NBA Stats logo" title="NBA Stats" align="right" width=300/>
+ alt="NBA Stats logo" title="NBA Stats" align="right" width=400/>
 
 NBA Stats is a scrapping tool that gives stats per year of the spanish players in the NBA
 
