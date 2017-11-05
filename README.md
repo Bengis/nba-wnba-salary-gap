@@ -5,8 +5,8 @@
 
 NBA Stats is a scrapping tool that gives stats per year of the spanish players in the NBA.
 
-Language: Python 3.6.2.
-Requires urllib, lxml and numpy.
+* Language: Python 3.6.2.
+* Requires urllib, lxml and numpy.
 
 ## Author
 
@@ -25,10 +25,10 @@ Assuming git, python and pip installed:
 
 ## About this software
 
-This software is part of the Practice 1 of the class: "Tipologia y ciclo de vida de los datos".
-Class: Tipologia y ciclo de vida de los datos.
-Master of Data Science.
-Universitat Oberta of Catalunya.
+* This software is part of the Practice 1 of the class: "Tipologia y ciclo de vida de los datos".
+* Class: Tipologia y ciclo de vida de los datos.
+* Master of Data Science.
+* Universitat Oberta of Catalunya.
 
 ## License
 
