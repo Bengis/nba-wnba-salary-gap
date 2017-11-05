@@ -10,14 +10,8 @@ Requires urllib, lxml and numpy.
 
 This software is part of the Practice 1 of the class: "Tipologia y ciclo de vida de los datos".
 
-Practice 1: Web Scrapping
--------------------------
-Class: Tipologia y ciclo de vida de los datos
-Master of Data Science
-Universitat Oberta of Catalunya
+#Author
 
-Author
--------
 Jose Ignacio Bengoechea Isasa, ignacio.bengis@gmail.com
 
 ## Quickstart
@@ -31,6 +25,12 @@ Assuming git, **[Vagrant][vagrant-install]** and **[VirtualBox][virtualbox-insta
 guest$ cd /vagrant/3-enrich/scala-common-enrich
 guest$ sbt test
 ```
+
+Practice 1: Web Scrapping
+-------------------------
+Class: Tipologia y ciclo de vida de los datos
+Master of Data Science
+Universitat Oberta of Catalunya
 
 License
 -------
