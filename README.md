@@ -1,11 +1,7 @@
 # NBA Stats
 
-[![Build Status][travis-image]][travis]
-[![Release][release-image]][releases]
-[![License][license-image]][license]
-
-<img src="https://d3i6fms1cm1j0i.cloudfront.net/github-wiki/images/snowplow-logo-large.png"
- alt="Snowplow logo" title="Snowplow" align="right" />
+<img src="https://raw.githubusercontent.com/Bengis/nba-stats/master/Logo.png"
+ alt="NBA Stats logo" title="NBA Stats" align="right" />
 
 NBA Stats is a scrapping tool that gives stats per year of the spanish players in the NBA
 
