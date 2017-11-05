@@ -28,7 +28,7 @@ Assuming git, python and pip installed:
 * This software is part of the Practice 1 of the class: "Tipologia y ciclo de vida de los datos".
 * Class: Tipologia y ciclo de vida de los datos.
 * Master of Data Science.
-* Universitat Oberta of Catalunya.
+* [Universitat Oberta of Catalunya.](http://www.uoc.edu/portal/ca/index.html)
 
 ## License
 
