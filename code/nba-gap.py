@@ -107,7 +107,7 @@ def exportCSV(stats, gender):
      header=["player", "games", "minutes", "points", "rebds.", 
              "assists", "steals", "blocks"]
      if gender==0:
-         csvfile = "../data/nba-stats-_out.csv"
+         csvfile = "../data/nba-stats_out.csv"
      if gender==1:
          csvfile = "../data/wnba-stats_out.csv"
      with open(csvfile, "w") as output:

@@ -79,7 +79,7 @@ def exportCSV(stats):
      header=["season", "players", "games", "minutes", "points", "rebds.", 
              "assists", "steals", "blocks"]
   
-     csvfile = "../data/nba-stats_out.csv"
+     csvfile = "../data/spanish-nba-stats_out.csv"
      with open(csvfile, "w") as output:
          writer = csv.writer(output, lineterminator='\n')
          writer.writerow(header)
