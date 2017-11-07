@@ -100,12 +100,10 @@ def showHeaderStats(stats,gender):
     print(' ',end='\n') 
     header=["player", "games", "minutes", "points", "rebds.", 
              "assists", "steals", "blocks","salary",
-             "salary/points","salary/rebounds","salary/assists",
-             "salary/steals","salary/blocks"]
+             "slry/pts.","slry/rbds","slry/asts",
+             "slry/stls","slry/blks"]
     for i in range(0,len(header)):
-        print(header[i],end='\t')
-        if i==0:
-            print('',end='\t')
+        print(header[i])
     print(' ',end='\n') 
     for i in range(0,len(stats)):
         for j in range(0,linelen):
@@ -153,8 +151,8 @@ def exportCSV(stats, gender):
      print("Exporting dataset.", end='\n')
      header=["player", "games", "minutes", "points", "rebds.", 
              "assists", "steals", "blocks","salary",
-             "salary/points","salary/rebounds","salary/assists",
-             "salary/steals","salary/blocks"]
+             "slry/pts.","slry/rbds","slry/asts",
+             "slry/stls","slry/blks"]
      if gender==0:
          csvfile = "../data/nba-stats_out.csv"
      if gender==1:

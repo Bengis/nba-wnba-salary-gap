@@ -1,4 +1,4 @@
-player,games,minutes,points,rebds.,assists,steals,blocks,salary,salary/points,salary/rebounds,salary/assists,salary/steals,salary/blocks
+player,games,minutes,points,rebds.,assists,steals,blocks,salary,slry/pts.,slry/rbds,slry/asts,slry/stls,slry/blks
 James Harden,15,510,409,70,147,405,6,28299399,69191.7,404277.1,192512.9,69875.1,4716566.5
 Damian Lillard,15,480,367,70,85,300,7,26153057,71261.7,373615.1,307683.0,87176.9,3736151.0
 Stephen Curry,15,450,366,67,85,375,3,34682550,94761.1,517650.0,408030.0,92486.8,11560850.0
