@@ -58,13 +58,15 @@ def getRWNBADataPlayers(url):
  except HTTPError as e:
      return
  try:
-    players = tree.xpath('//tbody/tr/td/a/text()')
+    tempPlayers = tree.xpath('//tbody/tr/td/a/text()')
     stats=[]
     row=[]
+    players={}
     rowStats = tree.xpath('//table/tbody/tr/td/text()')
     
-    for i in range(0, len(players)):
-        row.append(players[i])
+    for i in range(0, len(tempPlayers)):
+        players[tempPlayers[i]]=i
+        row.append(tempPlayers[i])
         games=int(rowStats[i*21+2])
         row.append(games) #games
         row.append(int(float(rowStats[i*21+3])*games)) #minutes
@@ -73,12 +75,19 @@ def getRWNBADataPlayers(url):
         row.append(int(float(rowStats[i*21+6])*games)) #assists
         row.append(int(float(rowStats[i*21+7])*games)) #steals
         row.append(int(float(rowStats[i*21+8])*games)) #blocks
+        row.append(0) #sallary
+        row.append(0.0) #sallary/points
+        row.append(0.0) #sallary/rebounds
+        row.append(0.0) #sallary/assists
+        row.append(0.0) #sallary/steals
+        row.append(0.0) #sallary/blocks
+        
         stats.append(row)
         row=[]
  except Exception as e:
      print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
-     return stats
- return stats
+     return stats, players
+ return stats, players
 
 def showHeaderStats(stats,gender):
     print(' ',end='\n') 
@@ -90,7 +99,9 @@ def showHeaderStats(stats,gender):
     print("=====================================", end='\n')
     print(' ',end='\n') 
     header=["player", "games", "minutes", "points", "rebds.", 
-             "assists", "steals", "blocks"]
+             "assists", "steals", "blocks","salary",
+             "salary/points","salary/rebounds","salary/assists",
+             "salary/steals","salary/blocks"]
     for i in range(0,len(header)):
         print(header[i],end='\t')
         if i==0:
@@ -100,12 +111,50 @@ def showHeaderStats(stats,gender):
         for j in range(0,linelen):
                 print(stats[i][j],end='\t')
         print(' ',end='\n')  
+        
+def getSalaryNBADataPlayers(url,stats, players):
+ try:
+    driver = webdriver.PhantomJS()
+    driver.set_window_size(1120, 550)
+    driver.get(url)
+    driver.maximize_window()
+
+    wait = WebDriverWait(driver, 10)
+    wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "tablesorter-headerRow")))
+     
+    content = driver.page_source
+    tree = html.fromstring(content) 
+ except HTTPError as e:
+     return
+ try:
+    names=tree.xpath('//td[@class="rank-name player noborderright"]/h3/a/text()')
+    print(len(names))
+    salaries = tree.xpath('//tbody/tr/td/span[@class="info"]/text()')
+ except Exception as e:
+    print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+ 
+ for i in range(0,len(salaries)):
+     try:
+         salary=int(salaries[i].replace(",","").replace("$",""))
+         player=players[names[i]]
+         stats[player][8]=salary
+         stats[player][9]=round(salary/stats[player][3],1)
+         stats[player][10]=round(salary/stats[player][4],1)
+         stats[player][11]=round(salary/stats[player][5],1)
+         stats[player][12]=round(salary/stats[player][6],1)
+         stats[player][13]=round(salary/stats[player][7],1)
+     except Exception as e:
+         print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+
+ return stats
 
 def exportCSV(stats, gender):
  try:
      print("Exporting dataset.", end='\n')
      header=["player", "games", "minutes", "points", "rebds.", 
-             "assists", "steals", "blocks"]
+             "assists", "steals", "blocks","salary",
+             "salary/points","salary/rebounds","salary/assists",
+             "salary/steals","salary/blocks"]
      if gender==0:
          csvfile = "../data/nba-stats_out.csv"
      if gender==1:
@@ -121,13 +170,17 @@ def exportCSV(stats, gender):
      return 
  return
 
-linelen=8
+linelen=14
 urlWNBA="https://www.rotowire.com/wnba/player-stats-byseason.php"
 urlNBA="https://www.rotowire.com/basketball/player-stats.php"
+urlSalaryNBA="http://www.spotrac.com/nba/rankings/"
+
 #urlNBA="https://stats.nba.com/leaders/?Season=2016-17&SeasonType=Regular%20Season&PerMode=Totals"
-stats=getRWNBADataPlayers(urlNBA)
+stats,players=getRWNBADataPlayers(urlNBA)
+stats=getSalaryNBADataPlayers(urlSalaryNBA,stats, players)
 showHeaderStats(stats,0)
 exportCSV(stats, 0)
-stats=getRWNBADataPlayers(urlWNBA)
-showHeaderStats(stats,1)
-exportCSV(stats, 1)
+#stats=getRWNBADataPlayers(urlWNBA)
+#showHeaderStats(stats,1)
+
+#exportCSV(stats, 1)
