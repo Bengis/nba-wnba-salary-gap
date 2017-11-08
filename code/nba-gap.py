@@ -198,7 +198,8 @@ def exportCSV(stats, gender):
          writer = csv.writer(output, lineterminator='\n')
          writer.writerow(header)
          for stat in stats:
-             writer.writerow(stat)
+             if stat[8]!=0:
+                 writer.writerow(stat)
      print("Dataset exported to {}.".format(csvfile))
  except Exception as e:
      print('Error eCSV on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
