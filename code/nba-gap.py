@@ -152,14 +152,24 @@ def getSalaryNBADataPlayers(url,stats, players):
          stats[player][8]=salary
          if stats[player][3]!=0:
              stats[player][9]=int(salary/stats[player][3])
+         else:
+             stats[player][9]="NA"
          if stats[player][4]!=0:
              stats[player][10]=int(salary/stats[player][4])
+         else:
+             stats[player][10]="NA"
          if stats[player][5]!=0:
              stats[player][11]=int(salary/stats[player][5])
+         else:
+             stats[player][11]="NA"
          if stats[player][6]!=0:
              stats[player][12]=int(salary/stats[player][6])
+         else:
+             stats[player][12]="NA"
          if stats[player][7]!=0:
              stats[player][13]=int(salary/stats[player][7])
+         else:
+             stats[player][13]="NA"
      except Exception as e:
          print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
  return stats
@@ -171,16 +181,26 @@ def getSalaryWNBADataPlayers(stats):
          stats[i][8]=salary
          if stats[i][3]!=0:
              stats[i][9]=int(salary/stats[i][3])
+         else:
+             stats[i][9]="NA"
          if stats[i][4]!=0:
             stats[i][10]=int(salary/stats[i][4])
+         else:
+             stats[i][10]="NA"
          if stats[i][5]!=0:
             stats[i][11]=int(salary/stats[i][5])
+         else:
+             stats[i][11]="NA"
          if stats[i][6]!=0:
             stats[i][12]=int(salary/stats[i][6])
+         else:
+             stats[i][12]="NA"
          if stats[i][7]!=0:
             stats[i][13]=int(salary/stats[i][7])
+         else:
+             stats[i][13]="NA"
      except Exception as e:
-         print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+        print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
  return stats
 
 def exportCSV(stats, gender):
