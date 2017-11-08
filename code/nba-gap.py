@@ -66,7 +66,7 @@ def getRWNBADataPlayers(url,gender):
     row=[]
     players={}
     rowStats = tree.xpath('//table/tbody/tr/td/text()')
-    for i in range(0, len(tempPlayers)):
+    for i in range(0, int(len(rowStats)/21)):
         players[tempPlayers[i]]=i
         row.append(tempPlayers[i])
         if isfloat(rowStats[i*21+2]):
