@@ -66,31 +66,43 @@ def getRWNBADataPlayers(url,gender):
     row=[]
     players={}
     rowStats = tree.xpath('//table/tbody/tr/td/text()')
-    
     for i in range(0, len(tempPlayers)):
         players[tempPlayers[i]]=i
         row.append(tempPlayers[i])
-        games=int(rowStats[i*21+2])
+        if isfloat(rowStats[i*21+2]):
+            games=int(float(rowStats[i*21+2]))
         row.append(games) #games
-        row.append(int(float(rowStats[i*21+3])*games)) #minutes
-        row.append(int(float(rowStats[i*21+4])*games)) #points
-        row.append(int(float(rowStats[i*21+5])*games)) #rebounds
-        row.append(int(float(rowStats[i*21+6])*games)) #assists
-        row.append(int(float(rowStats[i*21+7])*games)) #steals
-        row.append(int(float(rowStats[i*21+8])*games)) #blocks
+        if isfloat(rowStats[i*21+3]):
+            row.append(int(float(rowStats[i*21+3])*games)) #minutes
+        if isfloat(rowStats[i*21+4]):
+            row.append(int(float(rowStats[i*21+4])*games)) #points
+        if isfloat(rowStats[i*21+5]):
+            row.append(int(float(rowStats[i*21+5])*games)) #rebounds
+        if isfloat(rowStats[i*21+6]):
+            row.append(int(float(rowStats[i*21+6])*games)) #assists
+        if isfloat(rowStats[i*21+7]):
+            row.append(int(float(rowStats[i*21+7])*games)) #steals
+        if isfloat(rowStats[i*21+8]):
+            row.append(int(float(rowStats[i*21+8])*games)) #blocks
         row.append(0) #sallary
         row.append(0.0) #sallary/points
         row.append(0.0) #sallary/rebounds
         row.append(0.0) #sallary/assists
         row.append(0.0) #sallary/steals
         row.append(0.0) #sallary/blocks
-        
         stats.append(row)
         row=[]
  except Exception as e:
      print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
      return stats, players
  return stats, players
+
+def isfloat(value):
+  try:
+    float(value)
+    return True
+  except ValueError:
+    return False
 
 def showHeaderStats(stats,gender):
     print(' ',end='\n') 
@@ -129,7 +141,6 @@ def getSalaryNBADataPlayers(url,stats, players):
      return
  try:
     names=tree.xpath('//td[@class="rank-name player noborderright"]/h3/a/text()')
-    print(len(names))
     salaries = tree.xpath('//tbody/tr/td/span[@class="info"]/text()')
  except Exception as e:
     print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
@@ -139,25 +150,35 @@ def getSalaryNBADataPlayers(url,stats, players):
          salary=int(salaries[i].replace(",","").replace("$",""))
          player=players[names[i]]
          stats[player][8]=salary
-         stats[player][9]=round(salary/stats[player][3],1)
-         stats[player][10]=round(salary/stats[player][4],1)
-         stats[player][11]=round(salary/stats[player][5],1)
-         stats[player][12]=round(salary/stats[player][6],1)
-         stats[player][13]=round(salary/stats[player][7],1)
+         if stats[player][3]!=0:
+             stats[player][9]=int(salary/stats[player][3])
+         if stats[player][4]!=0:
+             stats[player][10]=int(salary/stats[player][4])
+         if stats[player][5]!=0:
+             stats[player][11]=int(salary/stats[player][5])
+         if stats[player][6]!=0:
+             stats[player][12]=int(salary/stats[player][6])
+         if stats[player][7]!=0:
+             stats[player][13]=int(salary/stats[player][7])
      except Exception as e:
          print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
  return stats
 
-def getSalaryWNBADataPlayers(url,stats):
+def getSalaryWNBADataPlayers(stats):
  salary=105000
  for i in range(0,len(stats)):
      try:
          stats[i][8]=salary
-         stats[i][9]=round(salary/stats[i][3],1)
-         stats[i][10]=round(salary/stats[i][4],1)
-         stats[i][11]=round(salary/stats[i][5],1)
-         stats[i][12]=round(salary/stats[i][6],1)
-         stats[i][13]=round(salary/stats[i][7],1)
+         if stats[i][3]!=0:
+             stats[i][9]=int(salary/stats[i][3])
+         if stats[i][4]!=0:
+            stats[i][10]=int(salary/stats[i][4])
+         if stats[i][5]!=0:
+            stats[i][11]=int(salary/stats[i][5])
+         if stats[i][6]!=0:
+            stats[i][12]=int(salary/stats[i][6])
+         if stats[i][7]!=0:
+            stats[i][13]=int(salary/stats[i][7])
      except Exception as e:
          print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
  return stats
@@ -189,9 +210,9 @@ urlWNBA="https://www.rotowire.com/wnba/player-stats-byseason.php"
 urlNBA="https://www.rotowire.com/basketball/player-stats.php"
 urlSalaryNBA="http://www.spotrac.com/nba/rankings/"
 
-#stats,players=getRWNBADataPlayers(urlNBA,0)
-#stats=getSalaryNBADataPlayers(urlSalaryNBA,stats, players)
-#exportCSV(stats, 0)
-stats=getRWNBADataPlayers(urlWNBA,1)
-#print(stats)
+stats,players=getRWNBADataPlayers(urlNBA,0)
+stats=getSalaryNBADataPlayers(urlSalaryNBA,stats, players)
+exportCSV(stats, 0)
+stats, players=getRWNBADataPlayers(urlWNBA,1)
+stats=getSalaryWNBADataPlayers(stats)
 exportCSV(stats, 1)
