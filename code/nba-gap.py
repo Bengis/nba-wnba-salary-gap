@@ -198,7 +198,7 @@ def exportCSV(stats, gender):
          writer = csv.writer(output, lineterminator='\n')
          writer.writerow(header)
          for stat in stats:
-             if stat[8]!=0:
+             if stat[8]!=0 or len(stat)!=14:
                  writer.writerow(stat)
      print("Dataset exported to {}.".format(csvfile))
  except Exception as e:
