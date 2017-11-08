@@ -81,7 +81,7 @@ def getRWNBADataPlayers(url,gender):
         if isfloat(rowStats[i*21+6]):
             row.append(int(float(rowStats[i*21+6])*games)) #assists
         if isfloat(rowStats[i*21+7]):
-            row.append(int(float(rowStats[i*21+7])*games)) #steals
+            row.append(int(float(rowStats[i*21+7]))) #steals
         if isfloat(rowStats[i*21+8]):
             row.append(int(float(rowStats[i*21+8])*games)) #blocks
         row.append(0) #sallary
