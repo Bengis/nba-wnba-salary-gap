@@ -51,9 +51,12 @@ def getNBADataPlayers(url):
      return stats
  return stats
 
-def getRWNBADataPlayers(url):
+def getRWNBADataPlayers(url,gender):
  try:
-    page = requests.get(url)
+    if gender==0:
+        page = requests.post(url, data={'stat':'Per Game','season':'2016','submit':'Show Stats','dpstartwithrange':'10/25/2016','dpendwithrange':'04/13/2017'})
+    else:
+        page = requests.get(url)
     tree = html.fromstring(page.content)
  except HTTPError as e:
      return
@@ -143,7 +146,20 @@ def getSalaryNBADataPlayers(url,stats, players):
          stats[player][13]=round(salary/stats[player][7],1)
      except Exception as e:
          print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+ return stats
 
+def getSalaryWNBADataPlayers(url,stats):
+ salary=105000
+ for i in range(0,len(stats)):
+     try:
+         stats[i][8]=salary
+         stats[i][9]=round(salary/stats[i][3],1)
+         stats[i][10]=round(salary/stats[i][4],1)
+         stats[i][11]=round(salary/stats[i][5],1)
+         stats[i][12]=round(salary/stats[i][6],1)
+         stats[i][13]=round(salary/stats[i][7],1)
+     except Exception as e:
+         print('Error gLDP on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
  return stats
 
 def exportCSV(stats, gender):
@@ -173,12 +189,9 @@ urlWNBA="https://www.rotowire.com/wnba/player-stats-byseason.php"
 urlNBA="https://www.rotowire.com/basketball/player-stats.php"
 urlSalaryNBA="http://www.spotrac.com/nba/rankings/"
 
-#urlNBA="https://stats.nba.com/leaders/?Season=2016-17&SeasonType=Regular%20Season&PerMode=Totals"
-stats,players=getRWNBADataPlayers(urlNBA)
-stats=getSalaryNBADataPlayers(urlSalaryNBA,stats, players)
-showHeaderStats(stats,0)
-exportCSV(stats, 0)
-#stats=getRWNBADataPlayers(urlWNBA)
-#showHeaderStats(stats,1)
-
-#exportCSV(stats, 1)
+#stats,players=getRWNBADataPlayers(urlNBA,0)
+#stats=getSalaryNBADataPlayers(urlSalaryNBA,stats, players)
+#exportCSV(stats, 0)
+stats=getRWNBADataPlayers(urlWNBA,1)
+#print(stats)
+exportCSV(stats, 1)
