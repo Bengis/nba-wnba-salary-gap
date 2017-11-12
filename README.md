@@ -3,9 +3,17 @@
 <img src="https://raw.githubusercontent.com/Bengis/nba-stats/master/Logo.png"
  alt="NBA Stats logo" title="NBA Stats" align="right" width=400/>
 
-Have you ever wondered if the spanish NBA players could make a good NBA Team?
+Did you know that the salary gap between NBA and WNBA is one of the biggest in the sports?
 
-NBA Stats is a scrapping tool that gives stats, like points, rebounds and assists, per game of all the spanish players in the NBA, grouped by year. You will see the number of player, the total of points, rebounds, assists, per game adjusted to the 48 minutes of a NBA match.
+NBA-WNBA Salary Gap is a scrapping tool that gives the following stats for all the NBA and WNBA players:
+
+* Salary.
+* Points and salary/points.
+* Rebounds and salary/rebounds.
+* Assists and salary/assists.
+* Steals and salary/steals.
+* Blocks and salary/blocs.
+
 
 ## Author
 
@@ -14,15 +22,14 @@ Jose Ignacio Bengoechea Isasa, ignacio.bengis@gmail.com
 ## Quickstart
 
 * Language: Python 3.6.2.
-* Requires urllib, lxml and numpy.
+* Requires urllib, lxml, requests, csv, selenium and PhantomJS.
 
 Assuming git, python and pip installed:
 
 ```bash
  git clone https://github.com/Bengis/nba-stats.git
  cd nba-stats/code
- pip install lxml
- python nba-stats.py
+ python nba-gap.py
 ```
 
 ## About this software
