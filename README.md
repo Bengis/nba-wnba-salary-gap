@@ -38,6 +38,7 @@ Assuming git, python and pip installed:
 * Class: Tipologia y ciclo de vida de los datos.
 * Master of Data Science.
 * [Universitat Oberta of Catalunya.](http://www.uoc.edu/portal/ca/index.html)
+* Tutored by: Laia Subirats Maté
 
 ## License
 
