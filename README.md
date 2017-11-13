@@ -42,7 +42,7 @@ Assuming git, python and pip installed:
 
 ## PDF Report
 
-You can check the report of this proyect in this link. The report is in spanish.
+You can check the report of this proyect in this link. The report is in spanish:
 
 [https://github.com/Bengis/nba-wnba-salary-gap/blob/master/doc/informe-nba-wnba-salary-gap.pdf](https://github.com/Bengis/nba-wnba-salary-gap/blob/master/doc/informe-nba-wnba-salary-gap.pdf)
 
