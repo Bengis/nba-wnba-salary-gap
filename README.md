@@ -1,11 +1,11 @@
 ## NBA Stats: Basic and money stats of the NBA and WNBA players
 
-<img src="https://raw.githubusercontent.com/Bengis/nba-stats/master/Logo.png"
- alt="NBA Stats logo" title="NBA Stats" align="right" width=400/>
-
 Did you know that the salary gap between NBA and WNBA is one of the biggest in the sports?
 
 NBA Stats is a scrapping tool that gives the following stats for all the NBA and WNBA players:
+
+<img src="https://raw.githubusercontent.com/Bengis/nba-stats/master/Logo.png"
+ alt="NBA Stats logo" title="NBA Stats" align="right" width=400/>
 
 * Points and salary/points.
 * Rebounds and salary/rebounds.
