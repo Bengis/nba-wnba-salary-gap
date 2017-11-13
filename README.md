@@ -5,7 +5,7 @@
 
 Did you know that the salary gap between NBA and WNBA is one of the biggest in the sports?
 
-NBA-WNBA Salary Gap is a scrapping tool that gives the following stats for all the NBA and WNBA players:
+NBA Stats is a scrapping tool that gives the following stats for all the NBA and WNBA players:
 
 * Salary.
 * Points and salary/points.
@@ -39,6 +39,26 @@ Assuming git, python and pip installed:
 * Master of Data Science.
 * [Universitat Oberta of Catalunya.](http://www.uoc.edu/portal/ca/index.html)
 * Tutored by: Laia Subirats Maté
+
+## PDF Report
+
+You can check the report of this proyect in this link. The report is in spanish.
+
+[https://github.com/Bengis/nba-wnba-salary-gap/blob/master/doc/informe-nba-wnba-salary-gap.pdf](https://github.com/Bengis/nba-wnba-salary-gap/blob/master/doc/informe-nba-wnba-salary-gap.pdf)
+
+## Dataset
+
+You can check the dataset of this proyect in this folder:
+
+[https://github.com/Bengis/nba-wnba-salary-gap/tree/master/data](https://github.com/Bengis/nba-wnba-salary-gap/tree/master/data)
+
+The dataset related to NBA players:
+
+[https://github.com/Bengis/nba-wnba-salary-gap/blob/master/data/nba-stats_out.csv](https://github.com/Bengis/nba-wnba-salary-gap/blob/master/data/nba-stats_out.csv)
+
+The dataset related to WNBA players:
+
+[https://github.com/Bengis/nba-wnba-salary-gap/blob/master/data/wnba-stats_out.csv](https://github.com/Bengis/nba-wnba-salary-gap/blob/master/data/wnba-stats_out.csv)
 
 ## License
 
