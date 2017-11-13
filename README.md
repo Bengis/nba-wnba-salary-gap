@@ -1,6 +1,4 @@
-# NBA Stats
-
-### Basic and money stats of the NBA and WNBA players
+# NBA Stats: Basic and money stats of the NBA and WNBA players
 
 <img src="https://raw.githubusercontent.com/Bengis/nba-stats/master/Logo.png"
  alt="NBA Stats logo" title="NBA Stats" align="right" width=400/>
