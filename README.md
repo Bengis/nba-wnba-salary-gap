@@ -1,4 +1,4 @@
-## NBA Stats: Basic and money stats of the NBA and WNBA players
+## NBA Stats: Stats of the NBA and WNBA players related to the gender pay gap.
 
 Did you know that the salary gap between NBA and WNBA is one of the biggest in the sports?
 
