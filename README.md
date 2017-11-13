@@ -7,7 +7,6 @@ Did you know that the salary gap between NBA and WNBA is one of the biggest in t
 
 NBA Stats is a scrapping tool that gives the following stats for all the NBA and WNBA players:
 
-* Salary.
 * Points and salary/points.
 * Rebounds and salary/rebounds.
 * Assists and salary/assists.
